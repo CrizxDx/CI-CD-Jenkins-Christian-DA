@@ -10,8 +10,8 @@ pipeline {
         stage('Ejecutar Pruebas Python') {
             steps {
                 sh '''
-                    docker run --rm -v "${WORKSPACE}:/app" -w /app \
-                    python:3.11-slim python test_app.py
+                    docker run --rm -v $ (pwd):/app -w /app \
+                    python:3.11-slim python -m unittest test_app.py
                   '''
             }
         }
