@@ -8,8 +8,13 @@ pipeline {
         }
         stage('Ejecutar Pruebas Python') {
             steps {
-                // Sin atajos ni comandos raros: ejecutamos directamente el archivo de pruebas
-                sh 'docker run --rm -v "${WORKSPACE}:/app" -w /app python:3.11-slim python test_app.py'
+                sh '''
+                    echo "Revisando contenido actual de la carpeta:"
+                    ls -la
+                    
+                    echo "Ejecutando pruebas..."
+                    docker run --rm -v "${WORKSPACE}:/app" -w /app python:3.11-slim python test_app.py
+                '''
             }
         }
     }
