@@ -11,8 +11,11 @@ pipeline {
                 sh '''
                     cp test_app.py test_run.py
                     ls -la
-                    docker run --rm -v "${WORKSPACE}:/app" -w /app python:3.11-slim python test_run.py
-                '''
+                    docker run --rm -v /opt/jenkins_home/workspace/CI-CD-PullRequests_main:/app \
+                -w /app \
+                python:3.11-slim \
+                python test_run.py
+        '''
             }
         }
     }
